@@ -6,3 +6,4 @@ in day 2  file class we will undersatnd how to handle the sql quesries with null
 1. Display all the values of variables
 2. try to change value of each and every variable and dsiplay the error message if any.
 3. Redeclare variable with same name and initialise with new value and display the output.
+null is a object type  date,timestamp
