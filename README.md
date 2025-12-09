@@ -1,2 +1,8 @@
 # js_internal_023_training
 For HCL - Internal Phase Training
+select sal*12+comm as AnnualSalary,sal from emp;
+in day 2  file class we will undersatnd how to handle the sql quesries with null values 
+## Investigation studies on variable
+1. Display all the values of variables
+2. try to change value of each and every variable and dsiplay the error message if any.
+3. Redeclare variable with same name and initialise with new value and display the output.
