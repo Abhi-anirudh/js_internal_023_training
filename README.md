@@ -10,3 +10,4 @@ null is a object type  date,timestamp
 ## in day 3 we will understand about array,object and json
 ### Reduce
 array.reduce((accumulator,current){...inital},0)
+## Day4 we will learn about dom implementaion with js
