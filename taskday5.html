@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="f1" align="center">
+        <input type="text" id="name" placeholder="Enter name"><br><br><br>
+       <input type="password" id="password" placeholder="Enter password"><br><br><br>
+        <button type="submit">Submit</button>
+        <p id="p1" style="color: red;"></p>
+    </form>
+    <script>
+        document.getElementById("f1").addEventListener("submit", function(event){
+            event.preventDefault();
+           let a=document.getElementById("name").value.trim();
+           let b=document.getElementById("password").value.trim();
+           let message=document.getElementById("p1");
+           if(a.length==0){
+            message.innerHTML="Name cannot be empty";
+           }
+           else if(b.length<6){
+            message.innerHTML="Password must be at least 6 characters long";
+           }
+           else{
+            message.innerHTML="Form submitted successfully!";
+           }
+        });
+    </script>
+</body>
+</html>
