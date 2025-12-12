@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAMPLE OF DOM</title>
+</head>
+<body>
+<h1 id="h1d1">First heading</h1>
+<h2 id="h2d2">Second heading</h2>
+<button id="changeColor">Change Color</button>
+<button id="changeCaption">Change Caption</button>
+<button id="bothChanges">Change Both</button>
+<script>
+document.getElementById("changeColor").addEventListener("click", function(){
+    document.getElementById("h1d1").style.color="red";
+    document.getElementById("h2d2").style.color="blue";
+});
+document.getElementById("changeCaption").addEventListener("click", function(){
+    document.getElementById("h2d2").innerHTML="welcome to the new caption";
+    document.getElementById("h1d1").innerHTML="Check out the new caption below";
+});
+document.getElementById("bothChanges").addEventListener("click", function(){
+    document.getElementById("h1d1").style.color="green";
+    document.getElementById("h2d2").style.color="orange";
+    document.getElementById("h1d1").innerHTML="Both heading and caption changed";
+    document.getElementById("h2d2").innerHTML="This is the updated caption now";
+});
+</script>
+</body>
+</html>
