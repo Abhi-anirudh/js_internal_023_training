@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4 Assignment - JavaScript Tasks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .task {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .task h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .btn-warning {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            min-height: 30px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 10px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            display: inline-block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .counter {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px;
+        }
+
+        .clock {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-style: italic;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        body.dark-mode .task {
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2 {
+            color: #ffffff;
+        }
+
+        body.dark-mode .output {
+            background-color: #3d3d3d;
+            color: #ffffff;
+        }
+
+        body.dark-mode li {
+            background-color: #3d3d3d;
+            color: #ffffff;
+        }
+
+        body.dark-mode input[type="text"] {
+            background-color: #3d3d3d;
+            color: #ffffff;
+            border-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Day 4 JavaScript Assignment - All Tasks</h1>
+
+        <!-- Task 1: Change Text on Button Click -->
+        <div class="task">
+            <h2>Task 1: Change Text on Button Click</h2>
+            <p id="task1-text">Click the button to change this text</p>
+            <button class="btn-primary" onclick="changeText()">Change Text</button>
+        </div>
+
+        <!-- Task 2: Background Color Changer -->
+        <div class="task">
+            <h2>Task 2: Background Color Changer</h2>
+            <button class="btn-danger" onclick="changeBackground('red')">Red</button>
+            <button class="btn-primary" onclick="changeBackground('blue')">Blue</button>
+            <button class="btn-success" onclick="changeBackground('green')">Green</button>
+            <button onclick="changeBackground('white')">Reset</button>
+        </div>
+
+        <!-- Task 3: Image Switcher -->
+        <div class="task">
+            <h2>Task 3: Image Switcher</h2>
+            <img id="image-switcher" src="https://via.placeholder.com/400x300/3498db/ffffff?text=Image+1" alt="Switchable Image">
+            <br>
+            <button class="btn-primary" onclick="previousImage()">Previous</button>
+            <button class="btn-success" onclick="nextImage()">Next</button>
+        </div>
+
+        <!-- Task 4: Show/Hide Paragraph -->
+        <div class="task">
+            <h2>Task 4: Show/Hide Paragraph</h2>
+            <p id="toggle-paragraph">This paragraph can be shown or hidden. Click the button to toggle visibility!</p>
+            <button class="btn-warning" onclick="toggleParagraph()">Toggle Paragraph</button>
+        </div>
+
+        <!-- Task 5: Counter App -->
+        <div class="task">
+            <h2>Task 5: Counter App</h2>
+            <div class="output">
+                <span class="counter" id="counter">0</span>
+            </div>
+            <button class="btn-success" onclick="increaseCounter()">+ Increase</button>
+            <button class="btn-danger" onclick="decreaseCounter()">- Decrease</button>
+            <button class="btn-warning" onclick="resetCounter()">Reset</button>
+        </div>
+
+        <!-- Task 6: Create Element Dynamically -->
+        <div class="task">
+            <h2>Task 6: Create Element Dynamically</h2>
+            <button class="btn-primary" onclick="addBox()">Add Box</button>
+            <div id="box-container"></div>
+        </div>
+
+        <!-- Task 7: Form Input Reader -->
+        <div class="task">
+            <h2>Task 7: Form Input Reader</h2>
+            <form onsubmit="return false;">
+                <input type="text" id="user-name" placeholder="Enter your name">
+                <button class="btn-success" onclick="displayName()">Submit</button>
+            </form>
+            <div class="output" id="name-output"></div>
+        </div>
+
+        <!-- Task 8: Todo List -->
+        <div class="task">
+            <h2>Task 8: Todo List</h2>
+            <input type="text" id="todo-input" placeholder="Enter a task">
+            <button class="btn-success" onclick="addTask()">Add Task</button>
+            <ul id="todo-list"></ul>
+        </div>
+
+        <!-- Task 9: Attribute Change -->
+        <div class="task">
+            <h2>Task 9: Attribute Change</h2>
+            <img id="resizable-image" src="https://via.placeholder.com/200x150/e74c3c/ffffff?text=Resizable" alt="Resizable Image">
+            <br>
+            <button class="btn-primary" onclick="changeImageSize('small')">Small</button>
+            <button class="btn-success" onclick="changeImageSize('large')">Large</button>
+        </div>
+
+        <!-- Task 10: Theme Switcher -->
+        <div class="task">
+            <h2>Task 10: Theme Switcher</h2>
+            <button class="btn-warning" onclick="toggleTheme()">Toggle Light/Dark Mode</button>
+            <div class="output" id="theme-status">Current Mode: Light</div>
+        </div>
+
+        <!-- Task 11: Live Clock (Bonus) -->
+        <div class="task">
+            <h2>Task 11: Live Clock (Bonus)</h2>
+            <div class="clock" id="live-clock">00:00:00</div>
+        </div>
+
+        <!-- Task 12: Random Quote Generator (Bonus) -->
+        <div class="task">
+            <h2>Task 12: Random Quote Generator (Bonus)</h2>
+            <div class="quote-box" id="quote-display">Click the button to get a random quote!</div>
+            <button class="btn-primary" onclick="generateQuote()">Get Random Quote</button>
+        </div>
+    </div>
+
+    <script>
+        // Task 1: Change Text on Button Click
+        function changeText() {
+            document.getElementById('task1-text').textContent = 'Welcome to JavaScript!';
+        }
+
+        // Task 2: Background Color Changer
+        function changeBackground(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        // Task 3: Image Switcher
+        let currentImageIndex = 0;
+        const images = [
+            'https://via.placeholder.com/400x300/3498db/ffffff?text=Image+1',
+            'https://via.placeholder.com/400x300/e74c3c/ffffff?text=Image+2'
+        ];
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('image-switcher').src = images[currentImageIndex];
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            document.getElementById('image-switcher').src = images[currentImageIndex];
+        }
+
+        // Task 4: Show/Hide Paragraph
+        function toggleParagraph() {
+            const paragraph = document.getElementById('toggle-paragraph');
+            if (paragraph.style.display === 'none') {
+                paragraph.style.display = 'block';
+            } else {
+                paragraph.style.display = 'none';
+            }
+        }
+
+        // Task 5: Counter App
+        let count = 0;
+
+        function increaseCounter() {
+            count++;
+            document.getElementById('counter').textContent = count;
+        }
+
+        function decreaseCounter() {
+            if (count > 0) {
+                count--;
+                document.getElementById('counter').textContent = count;
+            }
+        }
+
+        function resetCounter() {
+            count = 0;
+            document.getElementById('counter').textContent = count;
+        }
+
+        // Task 6: Create Element Dynamically
+        function addBox() {
+            const box = document.createElement('div');
+            box.className = 'box';
+            document.getElementById('box-container').appendChild(box);
+        }
+
+        // Task 7: Form Input Reader
+        function displayName() {
+            const name = document.getElementById('user-name').value;
+            if (name.trim() !== '') {
+                document.getElementById('name-output').textContent = `Hello, ${name}! Welcome to JavaScript!`;
+            } else {
+                document.getElementById('name-output').textContent = 'Please enter your name!';
+            }
+        }
+
+        // Task 8: Todo List
+        function addTask() {
+            const input = document.getElementById('todo-input');
+            const task = input.value;
+            
+            if (task.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = task;
+                document.getElementById('todo-list').appendChild(li);
+                input.value = '';
+            }
+        }
+
+        // Allow adding task with Enter key
+        document.getElementById('todo-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Task 9: Attribute Change
+        function changeImageSize(size) {
+            const image = document.getElementById('resizable-image');
+            if (size === 'small') {
+                image.setAttribute('width', '150');
+                image.setAttribute('height', '100');
+            } else if (size === 'large') {
+                image.setAttribute('width', '400');
+                image.setAttribute('height', '300');
+            }
+        }
+
+        // Task 10: Theme Switcher
+        let isDarkMode = false;
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            
+            const themeStatus = document.getElementById('theme-status');
+            themeStatus.textContent = isDarkMode ? 'Current Mode: Dark' : 'Current Mode: Light';
+        }
+
+        // Task 11: Live Clock (Bonus)
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Update clock every second
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+
+        // Task 12: Random Quote Generator (Bonus)
+        const quotes = [
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+            "Life is what happens when you're busy making other plans. - John Lennon",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "It is during our darkest moments that we must focus to see the light. - Aristotle",
+            "The only impossible journey is the one you never begin. - Tony Robbins",
+            "Life is 10% what happens to you and 90% how you react to it. - Charles R. Swindoll",
+            "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+            "If you can dream it, you can do it. - Walt Disney",
+            "The best time to plant a tree was 20 years ago. The second best time is now. - Chinese Proverb"
+        ];
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote-display').textContent = quotes[randomIndex];
+        }
+    </script>
+</body>
+</html>
