@@ -14,3 +14,4 @@ array.reduce((accumulator,current){...inital},0)
 ## Day 5 we studied and implemented dom, validation and refrencing
 ## Day 6 we will create a homepage where headimg, body,login and registration page by using form
 ### user id ,password and 2 button 
+### let params = new URLSearchParams(window.location.search)
