@@ -15,3 +15,5 @@ array.reduce((accumulator,current){...inital},0)
 ## Day 6 we will create a homepage where headimg, body,login and registration page by using form
 ### user id ,password and 2 button 
 ### let params = new URLSearchParams(window.location.search)
+transfer value by using different control input and 
+post plus validation 
