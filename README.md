@@ -11,4 +11,6 @@ null is a object type  date,timestamp
 ### Reduce
 array.reduce((accumulator,current){...inital},0)
 ## Day4 we will learn about dom implementaion with js
-## Da 5 we studied and implemented dom, validation and refrencing
+## Day 5 we studied and implemented dom, validation and refrencing
+## Day 6 we will create a homepage where headimg, body,login and registration page by using form
+### user id ,password and 2 button 
