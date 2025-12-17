@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Details</title>
+</head>
+<body>
+    <h1>Login Credentials</h1>
+    
+    <div>
+        <p><strong>User ID:</strong> <span id="userId"></span></p>
+        <p><strong>Password:</strong> <span id="password"></span></p>
+    </div>
+
+    <br>
+    <a href="homepage.html">Back to Home</a>
+
+    <script>
+        // Get data from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get('userId');
+        const password = params.get('password');
+
+        // Display the data
+        document.getElementById('userId').textContent = userId || '-';
+        document.getElementById('password').textContent = password || '-';
+    </script>
+</body>
+</html>
