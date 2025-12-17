@@ -3,25 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registration / Welcome</title>
+    <title>Registration Form</title>
 </head>
 <body>
-        <div id="message" style="font-family: Arial, sans-serif; margin: 20px;">
-                Loading...
-        </div>
-        <script>
-            (function(){
-                const params = new URLSearchParams(window.location.search);
-                const user = params.get('user');
-                const pass = params.get('pass');
-                const el = document.getElementById('message');
+  <center><h1>User Registration Form</h1></center>  
+  <hr color="green">
+  HOME &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Gallery
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Menu3 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu4
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu5&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu6
+  <hr color="green">
 
-                if(user && pass){
-                    el.textContent = `Welcome ${user} and your password is — ${pass}`;
-                } else {
-                    el.textContent = 'No user details provided. Please go back and login.';
-                }
-            })();
-        </script>
+  <div style="position:absolute;left:50%;width: 40%;height: 70%;top:30%;transform:translateX(-50%);background-color:lightyellow;padding:20px;border:2px solid gray;">
+    <center><h2>Registration</h2></center>
+    <form id="registrationForm" action="register.html" method="get">
+      <table style="width:100%;margin-top:20px;">
+        <tr>
+          <td style="padding:10px;"><b>User ID</b></td>
+          <td style="padding:10px;">
+            <input id="username" name="username" type="text" placeholder="Enter user ID" style="width:100%;padding:5px;">
+            <span id="userError" style="color:red; font-size:12px; display:none;">User ID is required</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px;"><b>Password</b></td>
+          <td style="padding:10px;">
+            <input id="password" name="password" type="password" placeholder="Enter password" style="width:100%;padding:5px;">
+            <span id="passError" style="color:red; font-size:12px; display:none;">Password is required</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px;"><b>Email</b></td>
+          <td style="padding:10px;">
+            <input id="email" name="email" type="email" placeholder="Enter email" style="width:100%;padding:5px;">
+            <span id="emailError" style="color:red; font-size:12px; display:none;">Valid email is required</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px;"><b>Department</b></td>
+          <td style="padding:10px;">
+            <select id="department" name="dept" style="width:100%;padding:5px;">
+              <option value="">-- Select Department --</option>
+              <option value="IT">IT</option>
+              <option value="HR">HR</option>
+              <option value="Finance">Finance</option>
+              <option value="Sales">Sales</option>
+              <option value="Marketing">Marketing</option>
+            </select>
+            <span id="deptError" style="color:red; font-size:12px; display:none;">Department is required</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px;"><b>Gender</b></td>
+          <td style="padding:10px;">
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other
+            <span id="genderError" style="color:red; font-size:12px; display:none;"><br>Gender is required</span>
+          </td>
+        </tr>
+      </table>
+
+      <center style="margin-top:20px;">
+        <button type="submit" style="padding:8px 20px;margin:5px;cursor:pointer;">Submit</button>
+        <button type="reset" style="padding:8px 20px;margin:5px;cursor:pointer;">Reset</button>
+      </center>
+    </form>
+    <center style="margin-top:10px;">
+      <a href="ho.html">Back to Login</a>
+    </center>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('registrationForm');
+      const userInput = document.getElementById('username');
+      const passInput = document.getElementById('password');
+      const emailInput = document.getElementById('email');
+      const deptInput = document.getElementById('department');
+      const genderInputs = document.getElementsByName('gender');
+
+      const userError = document.getElementById('userError');
+      const passError = document.getElementById('passError');
+      const emailError = document.getElementById('emailError');
+      const deptError = document.getElementById('deptError');
+      const genderError = document.getElementById('genderError');
+
+      function show(el){ el.style.display = 'inline'; }
+      function hide(el){ el.style.display = 'none'; }
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      form.addEventListener('submit', function(e){
+        let ok = true;
+        const user = userInput.value.trim();
+        const pass = passInput.value.trim();
+        const email = emailInput.value.trim();
+        const dept = deptInput.value.trim();
+        const gender = Array.from(genderInputs).find(g => g.checked);
+
+        // Reset errors
+        hide(userError);
+        hide(passError);
+        hide(emailError);
+        hide(deptError);
+        hide(genderError);
+
+        // Validation
+        if(!user){ show(userError); ok = false; }
+        if(!pass){ show(passError); ok = false; }
+        if(!email || !isValidEmail(email)){ show(emailError); ok = false; }
+        if(!dept){ show(deptError); ok = false; }
+        if(!gender){ show(genderError); ok = false; }
+
+        if(!ok){
+          e.preventDefault();
+          return;
+        }
+
+        // On success, redirect with query params
+        e.preventDefault();
+        const params = new URLSearchParams({ username: user, password: pass, email: email, dept: dept, gender: gender.value });
+        window.location.href = 'register.html?' + params.toString();
+      });
+
+      // Clear errors on input
+      userInput.addEventListener('input', () => hide(userError));
+      passInput.addEventListener('input', () => hide(passError));
+      emailInput.addEventListener('input', () => hide(emailError));
+      deptInput.addEventListener('input', () => hide(deptError));
+      genderInputs.forEach(input => input.addEventListener('change', () => hide(genderError)));
+    })();
+  </script>
+  </div>
 </body>
 </html>
