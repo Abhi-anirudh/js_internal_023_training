@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo of any Project staring</title>
+</head>
+<body>
+  <center><h1>Demo of online project</h1></center>  
+  <hr color="green">
+  HOME &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Gallery
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Menu3 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu4
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu5&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu6
+  <hr color="green">
+  <div style="position:absolute;left:1%;width: 33%;height: 70%;top:30%;background-color: aqua;">
+    <center>
+        text1<br>
+         text1<br>
+          text1<br>
+           text1<br>
+            text1<br>
+             text1<br>
+              text1<br>
+               text1<br>
+    </center>
+  </div>
+  <div style="position:absolute;left:33%;width: 33%;height: 70%;top:30%;background-color:blanchedalmond;">
+    <center>important notice</center>
+    <marquee direction="up" onmouseover="stop();" onmouseout="start();">
+        <center>Notice 1 <br>
+        Notice 2 <br>
+        Notice 3 <br>
+        Notice 4 <br>
+        Notice 5 <br>
+        Notice 6 <br>
+        Notice 7 <br>
+        Notice 8 <br></center>
+    </marquee>
+  </div>
+  <div style="position:absolute;left:66%;width: 33%;height: 70%;top:30%;background-color:aquamarine;">
+<center>Login</center>
+<form id="loginForm" action="reg.html" method="get">
+<table>
+    <tr>
+        <td>User Name</td>
+        <td>
+            <input id="username" name="user" type="text" placeholder="Enter any text">
+            <span id="userError" style="color:red; font-size:12px; display:none;">Username is required</span>
+        </td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>
+            <input id="password" name="pass" type="password" placeholder="Enter any text">
+            <span id="passError" style="color:red; font-size:12px; display:none;">Password is required</span>
+        </td>
+    </tr>
+</table>
+
+
+<center><button type="submit">submit</button>
+<button type="reset">cancel</button>
+</form>
+<br>
+<a href="reg.html">New User or Signup</a></center>
+  </div>
+  <script>
+    (function(){
+      const form = document.getElementById('loginForm');
+      const userInput = document.getElementById('username');
+      const passInput = document.getElementById('password');
+      const userError = document.getElementById('userError');
+      const passError = document.getElementById('passError');
+
+      function show(el){ el.style.display = 'inline'; }
+      function hide(el){ el.style.display = 'none'; }
+
+      form.addEventListener('submit', function(e){
+        let ok = true;
+        const user = userInput.value.trim();
+        const pass = passInput.value.trim();
+
+        if(!user){ show(userError); ok = false; } else { hide(userError); }
+        if(!pass){ show(passError); ok = false; } else { hide(passError); }
+
+        if(!ok){
+          e.preventDefault();
+          return;
+        }
+
+        // On success, redirect with query params to reg.html
+        e.preventDefault();
+        const params = new URLSearchParams({ user, pass });
+        window.location.href = 'reg.html?' + params.toString();
+      });
+
+      // Clear errors on input
+      userInput.addEventListener('input', () => hide(userError));
+      passInput.addEventListener('input', () => hide(passError));
+    })();
+  </script>
+  </div>
+</body>
+</html>

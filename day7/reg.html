@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration / Welcome</title>
+</head>
+<body>
+        <div id="message" style="font-family: Arial, sans-serif; margin: 20px;">
+                Loading...
+        </div>
+        <script>
+            (function(){
+                const params = new URLSearchParams(window.location.search);
+                const user = params.get('user');
+                const pass = params.get('pass');
+                const el = document.getElementById('message');
+
+                if(user && pass){
+                    el.textContent = `Welcome ${user} and your password is — ${pass}`;
+                } else {
+                    el.textContent = 'No user details provided. Please go back and login.';
+                }
+            })();
+        </script>
+</body>
+</html>
